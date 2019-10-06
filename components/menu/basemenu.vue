@@ -107,6 +107,20 @@
                             },
                         ]
                     },
+                    {
+                        title : "پرسنل",
+                        open:false,
+                        subMenu:[
+                            {
+                                title:"لیست کاربران سامانه",
+                                url:""
+                            },
+                            {
+                                title:"سطح دسترسی ها ",
+                                url:""
+                            },
+                        ]
+                    },
                 ]
             }
         },
@@ -122,6 +136,7 @@
         width: 280px;
         height: 100vh;
         position: relative;
+        text-align: right;
         left: 0;
         top: 0;
     }

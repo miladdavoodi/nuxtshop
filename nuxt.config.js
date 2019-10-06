@@ -25,6 +25,7 @@ export default {
   css: [
     'ant-design-vue/dist/antd.css',
     '@assets/css/style.css',
+    '@assets/bootstrap-4.2.1-rtl/dist/css/bootstrap.min.css',
   ],
   /*
   ** Plugins to load before mounting the App
