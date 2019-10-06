@@ -34,6 +34,16 @@
             return{
                 menu:[
                     {
+                        title : "گزارش‌ها",
+                        open:true,
+                        subMenu:[
+                            {
+                                title:"داشبرد اصلی",
+                                url:""
+                            },
+                        ]
+                    },
+                    {
                         title : "کالا ها",
                         open:false,
                         subMenu:[
@@ -161,7 +171,7 @@
         color: #fff;
         font-family: IRANSansWeb_Bold, serif;
         display: inline-block;
-        font-size: 15px;
+        font-size: 16px;
     }
     div.NavMenu > ul > li > div.fx > span i{
         color: rgba(255,255,255,0.2);
@@ -179,7 +189,7 @@
 
     div.NavMenu > ul > li ul {
         display: none;
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(0, 0, 0, 0.8);
         padding: 10px 0;
 
     }
@@ -190,7 +200,8 @@
     div.NavMenu > ul > li ul li {
         color: #999;
         cursor: pointer;
-        font-size: 13px;
+        font-family: IRANSansWeb_Medium, serif;
+        font-size: 14px;
     }
     div.NavMenu > ul > li ul li:hover,
     div.NavMenu > ul > li ul li.active{
