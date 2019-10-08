@@ -72,6 +72,7 @@ class Products extends CI_Controller
                 'Fd_Prodt_description' => trim($data['description']),
                 'Fd_Prodt_status' => trim($data['state']),
                 'Fd_Prodt_stateClub' => trim($data['stateClub']),
+                'Fd_Prodt_seo' => json_encode($data['seo']),
                 'Fd_Prodt_product' => json_encode($productList),
                 'Fd_Prodt_images' => json_encode($imagesList),
                 'Fd_Prodt_dateSave' => date('Y-m-d H:i:s'),
@@ -154,6 +155,7 @@ class Products extends CI_Controller
                 'stateClub' => ($row->Fd_Prodt_stateClub)?true:false,
                 'product' => json_decode($row->Fd_Prodt_product),
                 'images' => json_decode($row->Fd_Prodt_images),
+                'seo' => json_decode($row->Fd_Prodt_seo),
 
             );
 

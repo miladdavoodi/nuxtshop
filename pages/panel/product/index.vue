@@ -8,7 +8,6 @@
             <div v-if="frm.rowId" class="editRow">بروزرسانی کد : {{frm.rowId}}</div>
            </h1>
 
-
            <div class="row">
 
                <div class="col-md-12">
@@ -21,6 +20,17 @@
 
                        <div class="col-lg-1"><label>وضعیت</label></div>
                        <div class="col-lg-1"> <a-switch v-model="frm.state" /></div>
+
+                       <div class="col-12"><div class="hr"></div></div>
+
+                       <div class="col-lg-2"><label>توضیحات برای SEO</label></div>
+                       <div class="col-lg-10"><input v-model="frm.seo.description" class="_fild"/></div>
+
+                       <div class="col-12"><div class="hr"></div></div>
+
+                       <div class="col-lg-2"><label>کلمات کلیدی برای SEO</label></div>
+                       <div class="col-lg-10"><input v-model="frm.seo.keywords" class="_fild"/></div>
+
 
                        <div class="col-12"><div class="hr"></div></div>
                        <div class="col-lg-2"><label>توضیحات </label></div>
@@ -152,8 +162,12 @@
                   rowId:0,
                   title:"",
                   description:"",
-                  state:true,
+                  state:false,
                   stateClub:false,
+                  seo:{
+                      description:"",
+                      keywords:"",
+                  },
                   product: [
                       {code: "", color: "", price: "", discountedPrices: "", clubPrices: ""}
                   ],
@@ -212,6 +226,11 @@
 
                   this.frm.rowId = response.data.insert_id;
                   this.loading = false;
+
+                  this.$notification.success({
+                      message: 'ثبت شد',
+                      description: 'اطلاعات با موفقیت ثبت شد',
+                  });
 
               }).catch((error) => {
                   console.log('error 3 ' + error);

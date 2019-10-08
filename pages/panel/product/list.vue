@@ -78,7 +78,6 @@
                       this.loading = false;
                   });
 
-
               }else{
 
               }
@@ -93,7 +92,6 @@
                       'token':""
                   }
               }).then(resp => {
-                  console.log(resp.data.list);
                   this.data = resp.data.list;
                   this.pagination.total = resp.data.num_rows;
                   this.loading = false;
