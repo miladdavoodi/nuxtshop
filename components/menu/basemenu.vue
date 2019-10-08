@@ -5,18 +5,15 @@
         <ul>
             <li v-for="rw in menu">
                 <div v-on:click="rw.open=!rw.open" class="fx">
-
                     <a-icon v-if="!rw.open" type="caret-left"/>
                     <a-icon v-if="rw.open" type="caret-down" />
-
                     <span>{{rw.title}} <i> / {{rw.subMenu.length}}</i></span>
-
                 </div>
-                <ul v-bind:class="{open:rw.open}">
+                <ul v-bind:class="{open:(($route.name.indexOf(rw.name)!=-1) || rw.open)}">
                     <li v-for="n in rw.subMenu">
                         <div class="fx">
                             <a-icon type="swap-left"/>
-                            <span>{{n.title}}</span>
+                            <span><nuxt-link v-bind:to="n.url">{{n.title}}</nuxt-link></span>
                         </div>
                     </li>
                 </ul>
@@ -35,30 +32,33 @@
                 menu:[
                     {
                         title : "گزارش‌ها",
-                        open:true,
+                        name:"panel",
+                        open:false,
                         subMenu:[
                             {
                                 title:"داشبرد اصلی",
-                                url:""
+                                url:"/panel"
                             },
                         ]
                     },
                     {
                         title : "کالا ها",
-                        open:false,
+                        name:"panel-product",
+                        open:true,
                         subMenu:[
                             {
                                 title:"تعریف کالای جدید",
-                                url:""
+                                url:"/panel/product"
                             },
                             {
                                 title:"لیست کالا ها",
-                                url:""
+                                url:"/panel/product/list"
                             },
                         ]
                     },
                     {
                         title : "سفارشات اصلی",
+                        name:"product2",
                         open:false,
                         subMenu:[
                             {
@@ -73,6 +73,7 @@
                     },
                     {
                         title : "مالی / حسابداری",
+                        name:"product3",
                         open:false,
                         subMenu:[
                             {
@@ -87,6 +88,7 @@
                     },
                     {
                         title : "کدهای تخفیف",
+                        name:"produc4",
                         open:false,
                         subMenu:[
                             {
@@ -119,6 +121,7 @@
                     },
                     {
                         title : "پرسنل",
+                        name:"product5",
                         open:false,
                         subMenu:[
                             {
@@ -136,6 +139,9 @@
         },
         components: {
             logo,
+        },
+        mounted() {
+            console.log(this.$route.name)
         }
     }
 </script>
@@ -167,11 +173,20 @@
         padding: 10px 20px;
     }
 
-    div.NavMenu > ul > li > div.fx > span {
+    div.NavMenu > ul > li > div.fx > span,
+    div.NavMenu  a{
         color: #fff;
         font-family: IRANSansWeb_Bold, serif;
         display: inline-block;
         font-size: 16px;
+    }
+    div.NavMenu  a{
+        font-size: 14px;
+        color: #888;
+    }
+    div.NavMenu  a:hover{
+        text-decoration: none;
+        color: #fff;
     }
     div.NavMenu > ul > li > div.fx > span i{
         color: rgba(255,255,255,0.2);

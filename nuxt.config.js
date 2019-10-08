@@ -18,7 +18,7 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#b9926d;' ,height: '4px'},
   /*
   ** Global CSS
   */
@@ -51,6 +51,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: "http://charmekeyhan.com/server/"
   },
   /*
   ** Build configuration

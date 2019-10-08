@@ -3,8 +3,33 @@
    <basemenu/>
    <contentBox>
 
+       <div class="row">
+           <div class="col-md-3 col-sm-6" v-for="n in 4">
+               <div class="itemReport">
+                   <div class="title">
+                       <a-icon type="double-left" />
+                       <span>تعداد کاربران</span>
+                   </div>
+                   <div class="num">5,446</div>
+               </div>
+           </div>
+       </div>
+
        <div class="boxItem">
            <apexchart type=line height=350 :options="chartOptions" :series="series" />
+       </div>
+
+       <div class="boxItem">
+
+            <a-table :columns="columns" :dataSource="data" bordered>
+                <template slot="name" slot-scope="text">
+                  <a href="javascript:;">{{text}}</a>
+                </template>
+                <template slot="title" slot-scope="currentPageData">
+                   <div class="_title">آخرین سفارشات فروشگاه</div>
+                </template>
+              </a-table>
+
        </div>
 
    </contentBox>
@@ -16,6 +41,36 @@
   import contentBox from '../../components/content/index'
   import VueApexCharts from 'vue-apexcharts'
 
+  const columns = [{
+      title: 'Name',
+      dataIndex: 'name',
+      scopedSlots: { customRender: 'name' },
+  }, {
+      title: 'Cash Assets',
+      className: 'column-money',
+      dataIndex: 'money',
+  }, {
+      title: 'Address',
+      dataIndex: 'address',
+  }];
+
+  const data = [{
+      key: '1',
+      name: 'John Brown',
+      money: '￥300,000.00',
+      address: 'New York No. 1 Lake Park',
+  }, {
+      key: '2',
+      name: 'Jim Green',
+      money: '￥1,256,000.00',
+      address: 'London No. 1 Lake Park',
+  }, {
+      key: '3',
+      name: 'Joe Black',
+      money: '￥120,000.00',
+      address: 'Sidney No. 1 Lake Park',
+  }];
+
 
   export default {
       components: {
@@ -25,6 +80,8 @@
       },
       data: function() {
           return {
+              data,
+              columns,
               series: [{
                   name: 'TEAM A',
                   type: 'column',
@@ -96,5 +153,35 @@
       },
   }
 </script>
-<style>
+<style scoped>
+    div.itemReport{
+        background: #b9926d;
+        padding: 10px;
+        min-height: 80px;
+        width: 100%;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        direction: rtl;
+        text-align: right;
+        color: #fff;
+        font-family: IRANSansWeb_Bold,serif;
+    }
+    div.itemReport div.title{
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 5px;
+    }
+    div.itemReport div.title svg{
+        display: inline-block;
+        margin-left: 10px;
+        font-size: 11px;
+        position: relative;
+        top: -4px;
+
+    }
+    div.itemReport div.num{
+        font-size: 25px;
+        color: #000;
+        padding-top: 5px;
+        text-align: center;
+    }
 </style>
