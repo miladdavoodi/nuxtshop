@@ -5,18 +5,15 @@
         <ul>
             <li v-for="rw in menu">
                 <div v-on:click="rw.open=!rw.open" class="fx">
-
                     <a-icon v-if="!rw.open" type="caret-left"/>
                     <a-icon v-if="rw.open" type="caret-down" />
-
                     <span>{{rw.title}} <i> / {{rw.subMenu.length}}</i></span>
-
                 </div>
-                <ul v-bind:class="{open:rw.open}">
+                <ul v-bind:class="{open:(($route.name.indexOf(rw.name)!=-1) || rw.open)}">
                     <li v-for="n in rw.subMenu">
                         <div class="fx">
                             <a-icon type="swap-left"/>
-                            <span>{{n.title}}</span>
+                            <span><nuxt-link v-bind:to="n.url">{{n.title}}</nuxt-link></span>
                         </div>
                     </li>
                 </ul>
@@ -34,21 +31,34 @@
             return{
                 menu:[
                     {
-                        title : "کالا ها",
+                        title : "گزارش‌ها",
+                        name:"panel",
                         open:false,
                         subMenu:[
                             {
+                                title:"داشبرد اصلی",
+                                url:"/panel"
+                            },
+                        ]
+                    },
+                    {
+                        title : "کالا ها",
+                        name:"panel-product",
+                        open:true,
+                        subMenu:[
+                            {
                                 title:"تعریف کالای جدید",
-                                url:""
+                                url:"/panel/product"
                             },
                             {
                                 title:"لیست کالا ها",
-                                url:""
+                                url:"/panel/product/list"
                             },
                         ]
                     },
                     {
                         title : "سفارشات اصلی",
+                        name:"product2",
                         open:false,
                         subMenu:[
                             {
@@ -63,6 +73,7 @@
                     },
                     {
                         title : "مالی / حسابداری",
+                        name:"product3",
                         open:false,
                         subMenu:[
                             {
@@ -77,6 +88,7 @@
                     },
                     {
                         title : "کدهای تخفیف",
+                        name:"produc4",
                         open:false,
                         subMenu:[
                             {
@@ -107,11 +119,28 @@
                             },
                         ]
                     },
+                    {
+                        title : "پرسنل",
+                        name:"product5",
+                        open:false,
+                        subMenu:[
+                            {
+                                title:"لیست کاربران سامانه",
+                                url:""
+                            },
+                            {
+                                title:"سطح دسترسی ها ",
+                                url:""
+                            },
+                        ]
+                    },
                 ]
             }
         },
         components: {
             logo,
+        },
+        mounted() {
         }
     }
 </script>
@@ -122,6 +151,7 @@
         width: 280px;
         height: 100vh;
         position: relative;
+        text-align: right;
         left: 0;
         top: 0;
     }
@@ -142,11 +172,20 @@
         padding: 10px 20px;
     }
 
-    div.NavMenu > ul > li > div.fx > span {
+    div.NavMenu > ul > li > div.fx > span,
+    div.NavMenu  a{
         color: #fff;
         font-family: IRANSansWeb_Bold, serif;
         display: inline-block;
-        font-size: 15px;
+        font-size: 16px;
+    }
+    div.NavMenu  a{
+        font-size: 14px;
+        color: #888;
+    }
+    div.NavMenu  a:hover{
+        text-decoration: none;
+        color: #fff;
     }
     div.NavMenu > ul > li > div.fx > span i{
         color: rgba(255,255,255,0.2);
@@ -164,7 +203,7 @@
 
     div.NavMenu > ul > li ul {
         display: none;
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(0, 0, 0, 0.8);
         padding: 10px 0;
 
     }
@@ -175,7 +214,8 @@
     div.NavMenu > ul > li ul li {
         color: #999;
         cursor: pointer;
-        font-size: 13px;
+        font-family: IRANSansWeb_Medium, serif;
+        font-size: 14px;
     }
     div.NavMenu > ul > li ul li:hover,
     div.NavMenu > ul > li ul li.active{

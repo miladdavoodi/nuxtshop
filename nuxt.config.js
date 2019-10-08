@@ -18,13 +18,14 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#b9926d;' ,height: '4px'},
   /*
   ** Global CSS
   */
   css: [
     'ant-design-vue/dist/antd.css',
     '@assets/css/style.css',
+    '@assets/bootstrap-4.2.1-rtl/dist/css/bootstrap.min.css',
   ],
   /*
   ** Plugins to load before mounting the App
@@ -50,6 +51,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+    baseURL: "http://charmekeyhan.com/server/"
   },
   /*
   ** Build configuration
