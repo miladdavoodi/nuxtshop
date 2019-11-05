@@ -8,7 +8,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Server
-server/
 
 # Runtime data
 pids
@@ -40,6 +39,8 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+
+server
 
 # TypeScript v1 declaration files
 typings/
@@ -91,3 +92,4 @@ sw.*
 
 # Vim swap files
 *.swp
+assets/images/
